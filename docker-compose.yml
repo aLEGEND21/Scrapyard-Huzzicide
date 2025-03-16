@@ -18,7 +18,7 @@ services:
   huzzicide.frontend:
     container_name: huzzicide.frontend
     restart: always
-    build: ./client
+    build: ./frontend
     networks:
       - nginx-proxy
     ports:
