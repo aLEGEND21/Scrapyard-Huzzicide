@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  huzzicide.backend:
+    container_name: huzzicide.backend
+    restart: always
+    build: ./backend
+    networks:
+      - nginx-proxy
+    ports:
+      - "3007:3007"
+    environment:
+      - BACKEND_PORT=$BACKEND_PORT
+      - FLASK_SECRET_KEY=$FLASK_SECRET_KEY
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+    command: gunicorn -w 1 -b 0.0.0.0:3007 app:app
+  
+  huzzicide.frontend:
+    container_name: huzzicide.frontend
+    restart: always
+    build: ./client
+    networks:
+      - nginx-proxy
+    ports:
+      - "3006:3006"
+    depends_on:
+      - huzzicide.backend
+    environment:
+      - BACKEND_URL=$BACKEND_URL
+      - FRONTEND_PORT=$FRONTEND_PORT
+    command: npm start
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy # Used for reverse proxy across multiple services
+    external: true
