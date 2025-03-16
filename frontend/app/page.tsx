@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 //import { useToast } from "@/hooks/use-toast"
 import Image from "next/image";
+import { BACKEND_URL } from "@/lib/env";
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -38,11 +39,12 @@ export default function Home() {
     setIsAnalyzing(true);
 
     // Simulate API call to backend for OCR and AI analysis
+    console.log(BACKEND_URL);
     try {
       const formData = new FormData();
       formData.append("image", selectedImage);
 
-      const response = await fetch("http://localhost:3007/get_response", {
+      const response = await fetch(`${BACKEND_URL}/get_response`, {
         method: "POST",
         body: formData,
       });
