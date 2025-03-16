@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useRef, useState } from "react";
-import { Upload, MessageSquare, Share2, Trash2 } from "lucide-react";
+import { Upload, MessageSquare, Share2, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -112,12 +112,12 @@ export default function Home() {
               >
                 {isAnalyzing ? (
                   <>
-                    <span className="mr-2">Analyzing...</span>
-                    <Skeleton className="h-4 w-4 rounded-full animate-pulse bg-white/20" />
+                    <Loader2 className="animate-spin mt-0.5" />
+                    <span>Analyzing</span>
                   </>
                 ) : (
                   <>
-                    <MessageSquare className="mr-2 h-4 w-4" />
+                    <MessageSquare className="mt-0.5" />
                     Get Terrible Advice
                   </>
                 )}
@@ -136,7 +136,7 @@ export default function Home() {
                   <Button
                     variant="destructive"
                     size="icon"
-                    className="absolute top-2 right-2 rounded-full"
+                    className="absolute -top-3 right-6 rounded-full"
                     onClick={resetAll}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -176,9 +176,12 @@ export default function Home() {
             <Card className="bg-gray-800/50 border-gray-700 p-6 rounded-xl">
               {advice ? (
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-pink-400">
-                    Expert Advice:
+                  <h3 className="text-xl font-semibold text-pink-500">
+                    Expert Advice
                   </h3>
+                  <p className="text-md text-gray-400 -mt-1">
+                    Respond back with this:
+                  </p>
                   <div className="bg-gray-900/70 p-4 rounded-lg border border-gray-700">
                     <p className="text-gray-200">{advice}</p>
                   </div>
