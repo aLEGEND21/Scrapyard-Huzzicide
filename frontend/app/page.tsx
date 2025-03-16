@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Upload, MessageSquare, Share2, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +18,18 @@ export default function Home() {
   //const { toast } = useToast()
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [activeTab, setActiveTab] = useState("upload");
+
+  // Load the sample image
+  useEffect(() => {
+    const resp = fetch("/sample_image.jpg")
+      .then((res) => {
+        return res.blob();
+      })
+      .then((blob) => {
+        setSelectedImage(blob as File);
+        setSelectedImageUrl(URL.createObjectURL(blob));
+      });
+  }, []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
