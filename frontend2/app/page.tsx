@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import { Upload, MessageSquare, Share2, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 //import { useToast } from "@/hooks/use-toast"
 import Image from "next/image";
@@ -64,10 +63,7 @@ export default function Home() {
   const shareAdvice = () => {
     if (advice) {
       navigator.clipboard.writeText(advice);
-      /*toast({
-        title: "Copied to clipboard!",
-        description: "Now go ruin that conversation!",
-      })*/
+      alert("Copied to clipboard!");
     }
   };
 
