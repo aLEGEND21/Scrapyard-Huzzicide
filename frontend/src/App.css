@@ -40,3 +40,50 @@
 .read-the-docs {
   color: #888;
 }
+
+.title {
+  font-family: 'Trebuchet MS', sans-serif; /* Change to your desired font */
+  font-size: 3em; /* Adjust the font size as needed */
+  text-align: center; /* Center the text */
+  margin-top: 10px; /* Adjust the top margin as needed */
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#fileInput {
+  display: none;
+}
+
+.file-label {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.upload-button:disabled {
+  background-color: #cccccc; /* Grey background for disabled state */
+  cursor: not-allowed; /* Change cursor to not-allowed */
+}
+
+.upload-icon {
+  width: 16px;
+  height: 16px;
+}
