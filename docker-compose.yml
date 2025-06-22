@@ -8,12 +8,12 @@ services:
     networks:
       - nginx-proxy
     ports:
-      - "3007:3007"
+      - "3041:3041"
     environment:
       - BACKEND_PORT=$BACKEND_PORT
       - FLASK_SECRET_KEY=$FLASK_SECRET_KEY
       - OPENAI_API_KEY=$OPENAI_API_KEY
-    command: gunicorn -w 1 -b 0.0.0.0:3007 app:app
+    command: gunicorn -w 1 -b 0.0.0.0:3041 app:app
   
   huzzicide.frontend:
     container_name: huzzicide.frontend
@@ -22,7 +22,7 @@ services:
     networks:
       - nginx-proxy
     ports:
-      - "3006:3006"
+      - "3040:3040"
     depends_on:
       - huzzicide.backend
     environment:
